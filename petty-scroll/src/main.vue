@@ -128,14 +128,14 @@
           this.sizeHeight = (heightPercentage < 100) ? (heightPercentage + '%') : ''
           this.sizeWidth = (widthPercentage < 100) ? (widthPercentage + '%') : ''
           if (this.$refs.scrollVbar) {
-            if (this.sizeHeight === 0) {
+            if (this.sizeHeight === '') {
               this.$refs.scrollVbar.$el.style.display = 'none'
             } else {
               this.$refs.scrollVbar.$el.style.display = 'block'
             }
           }
           if (this.$refs.scrollHbar) {
-            if (this.sizeWidth === 0) {
+            if (this.sizeWidth === '') {
               this.$refs.scrollHbar.$el.style.display = 'none'
             } else {
               this.$refs.scrollHbar.$el.style.display = 'block'
