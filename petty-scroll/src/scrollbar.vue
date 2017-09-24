@@ -1,5 +1,6 @@
 <script>
   import { SCROLLBAR_MAP, thumbStyle } from './utils/common-scrollbar'
+  import { on, off } from './utils/dom'
 
   export default {
     name: 'ScrollBar',
@@ -26,6 +27,9 @@
           ';z-Index:' + this.railStyle.zIndex +
           ';height:' + this.barStyle.width +
           ';bottom:' + this.railStyle.marginBottom
+      },
+      wrap: function () {
+        return this.$parent.wrap
       }
     },
     render: function (h) {
@@ -34,6 +38,9 @@
         ref: 'thumbbar',
         class: {
           'petty-scrollbar-thumb': true
+        },
+        on: {
+          mousedown: this.clickThumbHandler
         },
         style: thumbStyle(this.move, this.size, this.bar, this.barStyle)
       })
@@ -45,17 +52,61 @@
           'is-horizontal': !this.vertical,
           'is-vertical': this.vertical
         },
+        on: {
+          mouseenter: this.handleRailMouseEnter,
+          mousedown: this.clickTrackHandler
+        },
         style: this.railStyles
       }, ([thumbbar]))
-      let nodes = ([
-        wrap,
-        railbar
-      ])
+      return railbar
+    },
+    methods: {
+      clickThumbHandler (e) {
+        this.startDrag(e)
+        this[this.bar.axis] = (e.currentTarget[this.bar.offset] - (e[this.bar.client] - e.currentTarget.getBoundingClientRect()[this.bar.direction]))
+      },
+      handleRailMouseEnter: function () {
+        this.$refs.railbar.children[0].style.opacity = 1
+      },
+      clickTrackHandler: function (e) {
+        const offset = Math.abs(e.target.getBoundingClientRect()[this.bar.direction] - e[this.bar.client])
+        const thumbHalf = (this.$refs.thumbbar[this.bar.offset] / 2)
+        const thumbPositionPercentage = ((offset - thumbHalf) * 100 / this.$el[this.bar.offset])
 
-      console.log(thumbStyle(this.move, this.size, this.bar, this.barStyle))
-      return h('div', nodes)
+        this.wrap[this.bar.scroll] = (thumbPositionPercentage * this.wrap[this.bar.scrollSize] / 100)
+      },
+
+      startDrag: function (e) {
+        e.stopImmediatePropagation()
+        this.cursorDown = true
+
+        on(document, 'mousemove', this.mouseMoveDocumentHandler)
+        on(document, 'mouseup', this.mouseUpDocumentHandler)
+        document.onselectstart = () => false
+      },
+
+      mouseMoveDocumentHandler: function (e) {
+        if (this.cursorDown === false) return
+        const prevPage = this[this.bar.axis]
+
+        if (!prevPage) return
+
+        const offset = ((this.$el.getBoundingClientRect()[this.bar.direction] - e[this.bar.client]) * -1)
+        const thumbClickPosition = (this.$refs.thumbbar[this.bar.offset] - prevPage)
+        const thumbPositionPercentage = ((offset - thumbClickPosition) * 100 / this.$el[this.bar.offset])
+        this.wrap[this.bar.scroll] = (thumbPositionPercentage * this.wrap[this.bar.scrollSize] / 100)
+      },
+
+      mouseUpDocumentHandler: function (e) {
+        this.cursorDown = false
+        this[this.bar.axis] = 0
+        off(document, 'mousemove', this.mouseMoveDocumentHandler)
+        document.onselectstart = null
+      }
+    },
+    destroyed: function () {
+      off(document, 'mouseup', this.mouseUpDocumentHandler)
     }
-
   }
 </script>
 

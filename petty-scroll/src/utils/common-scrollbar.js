@@ -22,7 +22,6 @@ export const SCROLLBAR_MAP = {
 }
 
 export function thumbStyle (move, size, bar, barStyle) {
-  console.log(barStyle)
   const style = {}
   const translate = `translate` + bar.axis + '(' + move + '%)'
   style[bar.size] = size
