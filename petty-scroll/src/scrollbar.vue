@@ -24,7 +24,11 @@
         },
         style: {
           backgroundColor: this.railStyle.color,
-          fontSize: '14px'
+          zIndex: this.railStyle.zIndex,
+          width: this.barStyle.width,
+          right: this.railStyle.marginRight,
+          height: this.barStyle.width,
+          bottom: this.railStyle.marginBottom
         }
       })
       let nodes = ([

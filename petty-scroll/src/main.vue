@@ -1,5 +1,6 @@
 <script>
     import Scrollbar from './scrollbar.vue'
+    import CalcScrollbarWidth from './utils/calc-scrollbar-width'
 
     export default {
       name: 'PettyScroll',
@@ -38,7 +39,7 @@
         }
       },
       render: function (h) {
-        let style = this.wrapStyle
+        let wrapMargin = '-' + CalcScrollbarWidth() + 'px'
         let barStyle = {
           color: this.opt.barColor,
           width: this.opt.barWidth + 'px',
@@ -60,7 +61,8 @@
         const wrap = h('div', {
           ref: 'wrap',
           style: {
-            style
+            marginRight: wrapMargin,
+            marginBottom: wrapMargin
           },
           class: {
             'petty-scrollbar-wrap': true
