@@ -65,6 +65,9 @@
 
         const wrap = h('div', {
           ref: 'wrap',
+          on: {
+            scroll: this.handleScroll
+          },
           style: {
             marginRight: wrapMargin,
             marginBottom: wrapMargin
@@ -119,6 +122,16 @@
         return h('div', {class: 'petty-scrollbar'}, nodes)
       },
       methods: {
+        handleScroll: function () {
+          const wrap = this.wrap
+          if (this.preScrollHeigt !== wrap.scrollHeight) {
+            this.preScrollHeigt = wrap.scrollHeight
+            this.update()
+          }
+          this.moveY = ((wrap.scrollTop * 100) / wrap.clientHeight)
+          this.moveX = ((wrap.scrollLeft * 100) / wrap.clientWidth)
+          console.log(this.moveY)
+        },
         update: function () {
           let heightPercentage, widthPercentage
           const wrap = this.wrap
