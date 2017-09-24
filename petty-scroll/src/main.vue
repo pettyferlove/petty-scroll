@@ -38,7 +38,6 @@
         }
       },
       render: function (h) {
-        console.log(this.tag)
         let style = this.wrapStyle
         let barStyle = {
           color: this.opt.barColor,
@@ -60,26 +59,14 @@
 
         const wrap = h('div', {
           ref: 'wrap',
+          style: {
+            style
+          },
           class: {
             'petty-scrollbar-wrap': true
           }
-        }, view)
+        }, ([view]))
         let nodes
-
-      /* <Bar
-        ref="refHBar"
-        barStyle = {barStyle}
-        railStyle= {railStyle}
-        move={ this.moveX }
-        size={ this.sizeWidth }></Bar>,
-        <Bar
-        ref="refVBar"
-        vertical
-        barStyle = {barStyle}
-        railStyle= {railStyle}
-        move={ this.moveY }
-        size={ this.sizeHeight }></Bar> */
-
         if (!this.native) {
           if (this.opt.horizrailenabled === true) {
             let scrollHbar = h('Scrollbar', {
@@ -120,7 +107,7 @@
           nodes = ([wrap])
         }
 
-        return h('div', {class: 'petty-scrollbar'}, ([wrap]))
+        return h('div', {class: 'petty-scrollbar'}, nodes)
       }
     }
 </script>
