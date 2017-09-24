@@ -84,6 +84,7 @@
             let scrollVbar = h('Scrollbar', {
               ref: 'scrollVbar',
               props: {
+                vertical: this.opt.horizrailenabled,
                 barStyle: barStyle,
                 railStyle: railStyle,
                 move: this.moveX,
@@ -96,6 +97,7 @@
             let scrollVbar = h('Scrollbar', {
               ref: 'scrollVbar',
               props: {
+                vertical: this.opt.horizrailenabled,
                 barStyle: barStyle,
                 railStyle: railStyle,
                 move: this.moveX,

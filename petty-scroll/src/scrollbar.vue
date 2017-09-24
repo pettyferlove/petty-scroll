@@ -13,6 +13,7 @@
       railStyle: Object
     },
     render: function (h) {
+      console.log(this.vertical)
       let wrap = this.$slots.default
       let railbar = h('div', {
         attrs: {
