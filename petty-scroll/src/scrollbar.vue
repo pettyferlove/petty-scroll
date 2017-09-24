@@ -1,5 +1,5 @@
 <script>
-  import SCROLLBAR_MAP from './utils/scrollbar-V&H'
+  import { SCROLLBAR_MAP, thumbStyle } from './utils/common-scrollbar'
 
   export default {
     name: 'ScrollBar',
@@ -30,10 +30,15 @@
     },
     render: function (h) {
       let wrap = this.$slots.default
-      let railbar = h('div', {
-        attrs: {
-          id: 'foo'
+      let thumbbar = h('div', {
+        ref: 'thumbbar',
+        class: {
+          'petty-scrollbar-thumb': true
         },
+        style: thumbStyle(this.move, this.size, this.bar, this.barStyle)
+      })
+
+      let railbar = h('div', {
         ref: 'railbar',
         class: {
           'petty-scrollbar-bar': true,
@@ -41,7 +46,7 @@
           'is-vertical': this.vertical
         },
         style: this.railStyles
-      })
+      }, ([thumbbar]))
       let nodes = ([
         wrap,
         railbar

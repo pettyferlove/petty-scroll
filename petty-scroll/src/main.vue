@@ -92,8 +92,8 @@
                 vertical: this.opt.horizrailenabled,
                 barStyle: barStyle,
                 railStyle: railStyle,
-                move: this.moveX,
-                size: this.sizeWidth
+                move: this.moveY,
+                size: this.sizeHeight
               }
             })
 
@@ -105,8 +105,8 @@
                 vertical: this.opt.horizrailenabled,
                 barStyle: barStyle,
                 railStyle: railStyle,
-                move: this.moveX,
-                size: this.sizeWidth
+                move: this.moveY,
+                size: this.sizeHeight
               }
             })
 
