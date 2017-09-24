@@ -29,7 +29,6 @@
       }
     },
     render: function (h) {
-      console.log(this.move)
       let wrap = this.$slots.default
       let thumbbar = h('div', {
         ref: 'thumbbar',
@@ -38,8 +37,6 @@
         },
         style: thumbStyle(this.move, this.size, this.bar, this.barStyle)
       })
-
-      console.log(thumbStyle(this.move, this.size, this.bar, this.barStyle))
 
       let railbar = h('div', {
         ref: 'railbar',

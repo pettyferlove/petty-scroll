@@ -130,7 +130,6 @@
           }
           this.moveY = ((wrap.scrollTop * 100) / wrap.clientHeight)
           this.moveX = ((wrap.scrollLeft * 100) / wrap.clientWidth)
-          console.log(this.moveY)
         },
         update: function () {
           let heightPercentage, widthPercentage
