@@ -18,6 +18,11 @@
         },
         barOption: {}
       },
+      computed: {
+        wrap () {
+          return this.$refs.wrap
+        }
+      },
       data () {
         return {
           sizeWidth: '0',
@@ -112,6 +117,41 @@
         }
 
         return h('div', {class: 'petty-scrollbar'}, nodes)
+      },
+      methods: {
+        update: function () {
+          let heightPercentage, widthPercentage
+          const wrap = this.wrap
+          if (!wrap) return
+          heightPercentage = (wrap.clientHeight * 100 / wrap.scrollHeight)
+          widthPercentage = (wrap.clientWidth * 100 / wrap.scrollWidth)
+          this.sizeHeight = (heightPercentage < 100) ? (heightPercentage + '%') : ''
+          this.sizeWidth = (widthPercentage < 100) ? (widthPercentage + '%') : ''
+          if (this.$refs.scrollVbar) {
+            if (this.sizeHeight === 0) {
+              this.$refs.scrollVbar.$el.style.display = 'none'
+            } else {
+              this.$refs.scrollVbar.$el.style.display = 'block'
+            }
+          }
+          if (this.$refs.scrollHbar) {
+            if (this.sizeWidth === 0) {
+              this.$refs.scrollHbar.$el.style.display = 'none'
+            } else {
+              this.$refs.scrollHbar.$el.style.display = 'block'
+            }
+          }
+        }
+      },
+      mounted: function () {
+        if (this.native) return
+        this.$nextTick(this.update)
+        // !this.noresize && addResizeListener(this.$refs.resize, this.update);
+      },
+
+      beforeDestroy () {
+        if (this.native) return
+        // !this.noresize && removeResizeListener(this.$refs.resize, this.update);
       }
     }
 </script>
