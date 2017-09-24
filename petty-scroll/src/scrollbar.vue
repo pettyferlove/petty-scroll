@@ -51,6 +51,8 @@
         wrap,
         railbar
       ])
+
+      console.log(thumbStyle(this.move, this.size, this.bar, this.barStyle))
       return h('div', nodes)
     }
 

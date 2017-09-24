@@ -31,12 +31,12 @@
           moveY: 0,
           preScrollHeigt: 0,
           opt: {
-            barColor: '#959595',   // 滚动条颜色
+            barColor: '#787878',   // 滚动条颜色
             barWidth: 6,           // 滚动条宽度
             railColor: '#eee',     // 导轨颜色
             barMarginRight: 0,     // 垂直滚动条距离整个容器右侧距离单位（px）
             barMaginBottom: 0,     // 水平滚动条距离底部距离单位（px)
-            barOpacityMin: 0.3,      // 滚动条非激活状态下的透明度
+            barOpacityMin: 0.5,      // 滚动条非激活状态下的透明度
             zIndex: 'auto',        // 滚动条z-Index
             autohidemode: true,     // 自动隐藏模式
             horizrailenabled: true // 是否显示水平滚动条
@@ -66,7 +66,9 @@
         const wrap = h('div', {
           ref: 'wrap',
           on: {
-            scroll: this.handleScroll
+            scroll: this.handleScroll,
+            mouseenter: this.handleMouseEnter,
+            mouseleave: this.handleMouseLeave
           },
           style: {
             marginRight: wrapMargin,
@@ -130,6 +132,22 @@
           }
           this.moveY = ((wrap.scrollTop * 100) / wrap.clientHeight)
           this.moveX = ((wrap.scrollLeft * 100) / wrap.clientWidth)
+        },
+        handleMouseEnter: function () {
+          if (this.$refs.scrollHbar) {
+            this.$refs.scrollHbar.$el.children[0].style.opacity = 1
+          }
+          if (this.$refs.scrollVbar) {
+            this.$refs.scrollVbar.$el.children[0].style.opacity = 1
+          }
+        },
+        handleMouseLeave: function () {
+          if (this.$refs.scrollHbar) {
+            this.$refs.scrollHbar.$el.children[0].style.opacity = this.opt.barOpacityMin
+          }
+          if (this.$refs.scrollVbar) {
+            this.$refs.scrollVbar.$el.children[0].style.opacity = this.opt.barOpacityMin
+          }
         },
         update: function () {
           let heightPercentage, widthPercentage
@@ -208,14 +226,14 @@
     cursor: pointer;
     border-radius: inherit;
     background-color: #959595;
-    opacity: 1;
+    opacity: 0.5;
     transition: opacity .34s ease-out;
     -moz-transition: opacity .34s ease-out; /* Firefox 4 */
     -webkit-transition: opacity .34s ease-out; /* Safari 和 Chrome */
     -o-transition: opacity .34s ease-out; /* Opera */
   }
   .petty-scrollbar-bar {
-    opacity: 1;
+    opacity: 0.5;
     transition: opacity .34s ease-out;
   }
 </style>
