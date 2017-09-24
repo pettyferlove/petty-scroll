@@ -1,0 +1,28 @@
+<template>
+  <div class="hello">
+    <PettyScroll>
+      <div style="height: 300px;">
+        <div style="height: 500px;background-color: greenyellow;text-align: center;">
+          11
+        </div>
+      </div>
+    </PettyScroll>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'hello'
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style>
+  *{
+    padding: 0px;
+    margin: 0px;
+  }
+  .code-back{
+    background-color: #e4e4e4;
+  }
+</style>
