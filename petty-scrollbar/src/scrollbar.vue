@@ -1,6 +1,5 @@
 <script>
   import { SCROLLBAR_MAP, thumbStyle } from './utils/common-scrollbar'
-  import { on, off } from './utils/dom'
 
   export default {
     name: 'ScrollBar',
@@ -33,7 +32,6 @@
       }
     },
     render: function (h) {
-      let wrap = this.$slots.default
       let thumbbar = h('div', {
         ref: 'thumbbar',
         class: {
@@ -79,18 +77,15 @@
       startDrag: function (e) {
         e.stopImmediatePropagation()
         this.cursorDown = true
-
-        on(document, 'mousemove', this.mouseMoveDocumentHandler)
-        on(document, 'mouseup', this.mouseUpDocumentHandler)
+        document.addEventListener('mousemove', this.mouseMoveDocumentHandler)
+        document.addEventListener('mouseup', this.mouseUpDocumentHandler)
         document.onselectstart = () => false
       },
 
       mouseMoveDocumentHandler: function (e) {
         if (this.cursorDown === false) return
         const prevPage = this[this.bar.axis]
-
         if (!prevPage) return
-
         const offset = ((this.$el.getBoundingClientRect()[this.bar.direction] - e[this.bar.client]) * -1)
         const thumbClickPosition = (this.$refs.thumbbar[this.bar.offset] - prevPage)
         const thumbPositionPercentage = ((offset - thumbClickPosition) * 100 / this.$el[this.bar.offset])
@@ -100,12 +95,12 @@
       mouseUpDocumentHandler: function (e) {
         this.cursorDown = false
         this[this.bar.axis] = 0
-        off(document, 'mousemove', this.mouseMoveDocumentHandler)
+        document.removeEventListener('mousemove', this.mouseMoveDocumentHandler)
         document.onselectstart = null
       }
     },
     destroyed: function () {
-      off(document, 'mouseup', this.mouseUpDocumentHandler)
+      document.removeEventListener('mouseup', this.mouseUpDocumentHandler)
     }
   }
 </script>
