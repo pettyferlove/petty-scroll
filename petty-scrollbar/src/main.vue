@@ -226,14 +226,14 @@
     cursor: pointer;
     border-radius: inherit;
     background-color: #959595;
-    opacity: 0.5;
+    opacity: 1;
     transition: opacity .34s ease-out;
     -moz-transition: opacity .34s ease-out; /* Firefox 4 */
     -webkit-transition: opacity .34s ease-out; /* Safari 和 Chrome */
     -o-transition: opacity .34s ease-out; /* Opera */
   }
   .petty-scrollbar-bar {
-    opacity: 0.5;
+    opacity: 1;
     transition: opacity .34s ease-out;
   }
 </style>
