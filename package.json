@@ -1,9 +1,8 @@
 {
   "name": "petty-scroll",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A Vue.js project",
   "author": "Pettyfer <pettyferlove@live.cn>",
-  "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
