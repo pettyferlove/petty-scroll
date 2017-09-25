@@ -2,7 +2,7 @@ import Vue from 'vue'
 /*
 * 判断滚动条宽度
 * */
-let scrollBarWidth
+var scrollBarWidth
 
 export default function () {
   if (Vue.prototype.$isServer) return 0
