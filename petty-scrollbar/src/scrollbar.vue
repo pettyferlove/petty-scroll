@@ -1,5 +1,5 @@
 <script>
-  import { SCROLLBAR_MAP, thumbStyle } from './utils/common-scrollbar'
+  import { SCROLLBAR_MAP, thumbStyle } from './utils/common-utils'
 
   export default {
     name: 'ScrollBar',

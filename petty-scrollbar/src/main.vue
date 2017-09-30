@@ -1,6 +1,6 @@
 <script>
     import Scrollbar from './scrollbar.vue'
-    import CalcScrollbarWidth from './utils/calc-scrollbar-width'
+    import CalcScrollbarWidth from './utils/common-utils'
 
     export default {
       name: 'PettyScroll',
