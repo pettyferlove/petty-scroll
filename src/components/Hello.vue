@@ -1,11 +1,10 @@
 <template>
   <petty-scroll>
-    <div style="height: 300px;overflow: auto" id="dadada">
+    <div style="height: 300px" id="dadada">
       <div style="height: 500px;background-color: greenyellow;text-align: center;">
 
       </div>
     </div>
-    <input type="button" @click="res">11111
   </petty-scroll>
 </template>
 
