@@ -1,18 +1,23 @@
 <template>
-  <div class="hello">
-    <PettyScroll>
-      <div style="height: 300px;">
-        <div style="height: 500px;background-color: greenyellow;text-align: center;">
+  <petty-scroll>
+    <div style="height: 300px;overflow: auto" id="dadada">
+      <div style="height: 500px;background-color: greenyellow;text-align: center;">
 
-        </div>
       </div>
-    </PettyScroll>
-  </div>
+    </div>
+    <input type="button" @click="res">11111
+  </petty-scroll>
 </template>
 
 <script>
+import PettyScroll from '../../petty-scrollbar/src/main.vue'
+
 export default {
-  name: 'hello'
+  components: {PettyScroll},
+  name: 'hello',
+  mounted () {
+    document.getElementById('dadada').scrollTop = 50
+  }
 }
 </script>
 

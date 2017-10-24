@@ -1,6 +1,7 @@
 <script>
     import Scrollbar from './scrollbar.vue'
     import CalcScrollbarWidth from './utils/common-utils'
+    import { addResizeListener, removeResizeListener } from './utils/dom'
 
     export default {
       name: 'PettyScroll',
@@ -176,12 +177,12 @@
       mounted: function () {
         if (this.native) return
         this.$nextTick(this.update)
-        // !this.noresize && addResizeListener(this.$refs.resize, this.update);
+        !this.noresize && addResizeListener(this.$refs.resize, this.update)
       },
 
       beforeDestroy () {
         if (this.native) return
-        // !this.noresize && removeResizeListener(this.$refs.resize, this.update);
+        !this.noresize && removeResizeListener(this.$refs.resize, this.update)
       }
     }
 </script>
