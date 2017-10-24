@@ -37,7 +37,7 @@
             railColor: '#eee',
             barMarginRight: 0,
             barMaginBottom: 0,
-            barOpacityMin: 0.5,
+            barOpacityMin: 0.3,
             zIndex: 'auto',
             autohidemode: true,
             horizrailenabled: true
@@ -136,10 +136,10 @@
         },
         handleMouseEnter: function () {
           if (this.$refs.scrollHbar) {
-            this.$refs.scrollHbar.$el.children[0].style.opacity = 1
+            this.$refs.scrollHbar.$el.children[0].style.opacity = 0.6
           }
           if (this.$refs.scrollVbar) {
-            this.$refs.scrollVbar.$el.children[0].style.opacity = 1
+            this.$refs.scrollVbar.$el.children[0].style.opacity = 0.6
           }
         },
         handleMouseLeave: function () {
@@ -227,7 +227,7 @@
     cursor: pointer;
     border-radius: inherit;
     background-color: #959595;
-    opacity: 1;
+    opacity: 0.6;
     transition: opacity .34s ease-out;
     -moz-transition: opacity .34s ease-out; /* Firefox 4 */
     -webkit-transition: opacity .34s ease-out; /* Safari 和 Chrome */
