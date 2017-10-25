@@ -1,7 +1,7 @@
 <script>
     import Scrollbar from './scrollbar.vue'
     import CalcScrollbarWidth from './utils/common-utils'
-    import { addResizeListener, removeResizeListener } from './utils/dom'
+    import { addResizeListener, removeResizeListener } from './utils/resize-event'
 
     export default {
       name: 'PettyScroll',
