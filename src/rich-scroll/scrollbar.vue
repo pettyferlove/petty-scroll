@@ -35,7 +35,7 @@
       let thumbbar = h('div', {
         ref: 'thumbbar',
         class: {
-          'petty-scrollbar-thumb': true
+          'rich-scrollbar-thumb': true
         },
         on: {
           mousedown: this.clickThumbHandler
@@ -46,7 +46,7 @@
       let railbar = h('div', {
         ref: 'railbar',
         class: {
-          'petty-scrollbar-bar': true,
+          'rich-scrollbar-bar': true,
           'is-horizontal': !this.vertical,
           'is-vertical': this.vertical
         },

@@ -4,7 +4,7 @@
     import { addResizeListener, removeResizeListener } from './utils/resize-event'
 
     export default {
-      name: 'PettyScroll',
+      name: 'RichScroll',
       components: { Scrollbar },
       props: {
         native: Boolean,
@@ -76,7 +76,7 @@
             marginBottom: wrapMargin
           },
           class: {
-            'petty-scrollbar-wrap': true
+            'rich-scrollbar-wrap': true
           }
         }, ([view]))
         let nodes
@@ -122,7 +122,7 @@
           nodes = ([wrap])
         }
 
-        return h('div', {class: 'petty-scrollbar'}, nodes)
+        return h('div', {class: 'rich-scrollbar'}, nodes)
       },
       methods: {
         handleScroll: function () {
@@ -188,17 +188,17 @@
 </script>
 
 <style>
-  .petty-scrollbar-wrap{
+  .rich-scrollbar-wrap{
     overflow: scroll;
   }
-  .petty-scrollbar-wrap--hidden-default{
+  .rich-scrollbar-wrap--hidden-default{
     overflow: scroll;
   }
-  .petty-scrollbar{
+  .rich-scrollbar{
     overflow: hidden;
     position: relative;
   }
-  .petty-scrollbar-bar {
+  .rich-scrollbar-bar {
     position: absolute;
     right: 2px;
     bottom: 2px;
@@ -207,19 +207,19 @@
     opacity: 0;
     transition: opacity .12s ease-out;
   }
-  .petty-scrollbar-bar.is-horizontal {
+  .rich-scrollbar-bar.is-horizontal {
     height: 6px;
     left: 0px;
     right: 0px;
     background-color: #eee;
   }
-  .petty-scrollbar-bar.is-vertical {
+  .rich-scrollbar-bar.is-vertical {
     width: 6px;
     top: 0px;
     bottom: 0px;
     background-color: #eee;
   }
-  .petty-scrollbar-thumb {
+  .rich-scrollbar-thumb {
     position: relative;
     display: block;
     width: 6px;
@@ -233,7 +233,7 @@
     -webkit-transition: opacity .34s ease-out; /* Safari 和 Chrome */
     -o-transition: opacity .34s ease-out; /* Opera */
   }
-  .petty-scrollbar-bar {
+  .rich-scrollbar-bar {
     opacity: 1;
     transition: opacity .34s ease-out;
   }

@@ -14,8 +14,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../dist'),
     publicPath: '',
-    filename: 'petty-scroll.min.js',
-    library: 'PettyScroll',
+    filename: 'rich-scroll.min.js',
+    library: 'RichScroll',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },

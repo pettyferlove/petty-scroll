@@ -1,4 +1,4 @@
-# petty-scroll
+# rich-scroll
 
 > A Vue.js project
 

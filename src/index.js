@@ -1,4 +1,4 @@
-import Scrollbar from './petty-scroll/main.vue'
+import Scrollbar from './rich-scroll/main.vue'
 
 /* istanbul ignore next */
 Scrollbar.install = function (Vue) {
